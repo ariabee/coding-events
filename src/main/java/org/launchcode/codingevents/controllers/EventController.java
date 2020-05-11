@@ -35,18 +35,15 @@ public class EventController {
         return "events/index";
     }
 
-    // lives at /events/create url
-    // Renders the form html (create.html)
     @GetMapping("create")
-    public String renderCreateEventForm() {
+    public String displayCreateEventForm(Model model) {
+        model.addAttribute("title", "Create Event");
         return "events/create";
     }
 
-    // lives at /events/create
-    // Creates the event using form data
     @PostMapping("create")
     public String createEvent(@RequestParam String eventName) {
         events.add(eventName);
-        return "redirect:"; // redirect to go to root path of controller
+        return "redirect:";
     }
 }
