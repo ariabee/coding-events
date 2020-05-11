@@ -31,6 +31,7 @@ public class EventController {
 //        events.put("Code Things","An event where we code things");
 //        events.put("Nap Time", "The best part of the day, on a cloud");
 
+        model.addAttribute("title", "All Events");
         model.addAttribute("events", events);
         return "events/index";
     }
