@@ -15,24 +15,19 @@ import java.util.HashMap;
 @RequestMapping("events")
 public class EventController {
 
-    private static List<String> events = new ArrayList<>();
+    private static HashMap<String, String> events = new HashMap<>();
 
-    // handler method for GET requests that takes a single parameter, Model model
     @GetMapping
     public String displayAllEvents(Model model) {
-//        List<String> events = new ArrayList<>();
-//        events.add("Taco Party");
-//        events.add("Code Things");
-//        events.add("Nap Time");
 
 //        HashMap<String, String> events = new HashMap<>();
-//
-//        events.put("Taco Party","A party where we make tacos");
-//        events.put("Code Things","An event where we code things");
-//        events.put("Nap Time", "The best part of the day, on a cloud");
 
-        model.addAttribute("title", "All Events");
+        events.put("Taco Party","A party where we make tacos.");
+        events.put("Code Things","An event where we code things.");
+        events.put("Nap Time", "The best part of the day. On a cloud.");
+
         model.addAttribute("events", events);
+        model.addAttribute("title", "All Events");
         return "events/index";
     }
 
@@ -43,8 +38,25 @@ public class EventController {
     }
 
     @PostMapping("create")
-    public String createEvent(@RequestParam String eventName) {
-        events.add(eventName);
+    public String createEvent(@RequestParam String eventName, @RequestParam String description) {
+        events.put(eventName, description);
         return "redirect:";
     }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
