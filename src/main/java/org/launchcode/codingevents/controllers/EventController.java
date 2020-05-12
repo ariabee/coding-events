@@ -20,11 +20,9 @@ public class EventController {
     @GetMapping
     public String displayAllEvents(Model model) {
 
-//        HashMap<String, String> events = new HashMap<>();
-
-        events.put("Taco Party","A party where we make tacos.");
-        events.put("Code Things","An event where we code things.");
-        events.put("Nap Time", "The best part of the day. On a cloud.");
+        events.put("Taco Party", "A party where we make tacos");
+        events.put("Code Things", "An event where we code things.");
+        events.put("Comicon", "A cosplay event");
 
         model.addAttribute("events", events);
         model.addAttribute("title", "All Events");
@@ -44,6 +42,27 @@ public class EventController {
     }
 
 }
+
+
+
+
+
+
+//    private static HashMap<String, String> events = new HashMap<>();
+//
+//    @GetMapping
+//    public String displayAllEvents(Model model) {
+//
+////        HashMap<String, String> events = new HashMap<>();
+//
+//        events.put("Taco Party","A party where we make tacos.");
+//        events.put("Code Things","An event where we code things.");
+//        events.put("Nap Time", "The best part of the day. On a cloud.");
+//
+//        model.addAttribute("events", events);
+//        model.addAttribute("title", "All Events");
+//        return "events/index";
+//    }
 
 
 

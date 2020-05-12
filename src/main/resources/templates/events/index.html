@@ -13,12 +13,15 @@
             <th>Event name</th>
             <th>Description</th>
             <th>Address</th>
+            <th>Image</th>
         </tr>
         <th:block th:each="event : ${events}">
             <tr>
                 <td th:text="${event.getKey()}"></td>
                 <td th:text="${event.getValue()}"></td>
-                <td th:replace="fragments :: address"></td>
+                <td th:replace="fragments :: address">This is the address</td>
+                <td><img th:src="@{https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/sunset-view-of-the-grande-beach-in-biarritz-france-marius-comanescu.jpg}" alt="Beach Sunset" height="70px" width="auto"/></td>
+                <td><img th:src="@{/palmtree.jpg}" alt="Palm Tree" height="70px" width="auto"></td>
             </tr>
         </th:block>
     </table>
