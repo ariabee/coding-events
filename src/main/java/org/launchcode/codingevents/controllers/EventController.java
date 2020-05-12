@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.HashMap;
 
@@ -16,6 +17,7 @@ import java.util.HashMap;
 public class EventController {
 
     private static HashMap<String, String> events = new HashMap<>();
+    private static ArrayList<String> images = new ArrayList<>(Arrays.asList("/palmtree.jpg", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/sunset-view-of-the-grande-beach-in-biarritz-france-marius-comanescu.jpg"));
 
     @GetMapping
     public String displayAllEvents(Model model) {
