@@ -54,6 +54,7 @@ public class EventController {
         model.addAttribute("event", eventToEdit);
         String title = "Edit Event " + eventToEdit.getName() + " (id=" + eventToEdit.getId() + ")";
         model.addAttribute("title", title );
+
         return "events/edit";
     }
 
@@ -62,10 +63,11 @@ public class EventController {
         Event eventToEdit = EventData.getById(eventId);
         eventToEdit.setName(name);
         eventToEdit.setDescription(description);
+
         return "redirect:";
     }
-}
 
+}
 
 
 
