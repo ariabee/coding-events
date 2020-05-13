@@ -10,16 +10,16 @@
 
     <table class="table table-striped">
         <tr>
+            <th>ID</th>
             <th>Event name</th>
             <th>Description</th>
-            <th>Address</th>
             <th>Image</th>
         </tr>
         <th:block th:each="event : ${events}">
             <tr>
+                <td th:text="${event.id}"></td>
                 <td th:text="${event.name}"></td>
                 <td th:text="${event.description}"></td>
-                <td th:replace="fragments :: address">This is the address</td>
                 <td><img th:src="@{/palmtree.jpg}" alt="Palm Tree" height="70px" width="auto"></td>
             </tr>
         </th:block>
