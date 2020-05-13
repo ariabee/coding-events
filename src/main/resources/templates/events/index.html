@@ -21,6 +21,9 @@
                 <td th:text="${event.name}"></td>
                 <td th:text="${event.description}"></td>
                 <td><img th:src="@{/palmtree.jpg}" alt="Palm Tree" height="70px" width="auto"></td>
+                <td>
+                    <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
+                </td>
             </tr>
         </th:block>
     </table>
