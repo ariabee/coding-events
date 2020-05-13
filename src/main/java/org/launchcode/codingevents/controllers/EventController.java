@@ -1,5 +1,6 @@
 package org.launchcode.codingevents.controllers;
 
+import org.launchcode.codingevents.models.Event;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,26 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.HashMap;
+
 
 @Controller
 @RequestMapping("events")
 public class EventController {
 
-    private static HashMap<String, String> events = new HashMap<>();
-    private static ArrayList<String> images = new ArrayList<>(Arrays.asList("/palmtree.jpg", "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/sunset-view-of-the-grande-beach-in-biarritz-france-marius-comanescu.jpg"));
+    private static List<Event> events = new ArrayList<>();
 
     @GetMapping
     public String displayAllEvents(Model model) {
-
-        events.put("Taco Party", "A party where we make tacos");
-        events.put("Code Things", "An event where we code things.");
-        events.put("Comicon", "A cosplay event");
-
-        model.addAttribute("events", events);
         model.addAttribute("title", "All Events");
+        model.addAttribute("events", events);
         return "events/index";
     }
 
@@ -38,33 +32,11 @@ public class EventController {
     }
 
     @PostMapping("create")
-    public String createEvent(@RequestParam String eventName, @RequestParam String description) {
-        events.put(eventName, description);
+    public String processCreateEventForm(@RequestParam String eventName) {
+        events.add(new Event(eventName));
         return "redirect:";
     }
-
 }
-
-
-
-
-
-
-//    private static HashMap<String, String> events = new HashMap<>();
-//
-//    @GetMapping
-//    public String displayAllEvents(Model model) {
-//
-////        HashMap<String, String> events = new HashMap<>();
-//
-//        events.put("Taco Party","A party where we make tacos.");
-//        events.put("Code Things","An event where we code things.");
-//        events.put("Nap Time", "The best part of the day. On a cloud.");
-//
-//        model.addAttribute("events", events);
-//        model.addAttribute("title", "All Events");
-//        return "events/index";
-//    }
 
 
 
