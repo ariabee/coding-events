@@ -7,9 +7,13 @@
     <header th:replace="fragments :: header"></header>
 
     <form method="post" action="/events/create">
-        <input type="text" name="eventName"/>
-        <input type="text" name="description" placeholder="Enter event description..."/>
-        <input type="submit" value="Create Event"/>
+        <label>Name
+            <input type="text" name="eventName">
+        </label>
+        <label>Description
+            <input type="text" name="eventDescription" placeholder="Enter event description...">
+        </label>
+        <input type="submit" value="Create" class="btn btn-success"/>
     </form>
 
 </body>
