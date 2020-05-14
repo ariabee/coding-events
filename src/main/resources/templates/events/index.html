@@ -11,8 +11,9 @@
     <table class="table table-striped">
         <tr>
             <th>ID</th>
-            <th>Event name</th>
+            <th>Event Name</th>
             <th>Description</th>
+            <th>Contact Email</th>
             <th>Image</th>
         </tr>
         <th:block th:each="event : ${events}">
@@ -20,10 +21,9 @@
                 <td th:text="${event.id}"></td>
                 <td th:text="${event.name}"></td>
                 <td th:text="${event.description}"></td>
+                <td th:text="${event.contactEmail}"></td>
                 <td><img th:src="@{/palmtree.jpg}" alt="Palm Tree" height="70px" width="auto"></td>
-                <td>
-                    <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
-                </td>
+                <td><a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a></td>
             </tr>
         </th:block>
 
