@@ -6,18 +6,27 @@
 
     <header th:replace="fragments :: header"></header>
 
-    <p th:text="${errorMsg}" style="color:red"></p>
+<!--    <p th:text="${errorMsg}" style="color:red"></p>-->
 
     <form method="post">
-        <label>Name
-            <input type="text" name="name" class="form-control"/>
-        </label>
-        <label>Description
-            <input type="text" name="description" placeholder="Enter event description..." class="form-control"/>
-        </label>
-        <label>Contact Email
-            <input type="text" name="contactEmail" class="form-control"/>
-        </label>
+        <div class="form-group">
+            <label>Name
+                <input type="text" th:field="${event.name}" class="form-control"/>
+            </label>
+            <p class="error" th:errors="${event.name}"></p>
+        </div>
+        <div class="form-group">
+            <label>Description
+                <input type="text" th:field="${event.description}" placeholder="Enter event description..." class="form-control"/>
+            </label>
+            <p class="error" th:errors="${event.description}"></p>
+        </div>
+        <div class="form-group">
+            <label>Contact Email
+                <input type="text" th:field="${event.contactEmail}" class="form-control"/>
+            </label>
+            <p class="error" th:errors="${event.contactEmail}"></p>
+        </div>
         <input type="submit" value="Create" class="btn btn-success"/>
     </form>
 

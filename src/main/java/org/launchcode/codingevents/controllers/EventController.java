@@ -23,6 +23,7 @@ public class EventController {
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
+        model.addAttribute("event", new Event()); // added once no-arg constructor created
         return "events/create";
     }
 
@@ -31,7 +32,6 @@ public class EventController {
         // if errors, redirect user to create form
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
-            model.addAttribute("errorMsg", "Bad data!");
             return "events/create";
         }
         EventData.add(newEvent);
