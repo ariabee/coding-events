@@ -1,6 +1,9 @@
 package org.launchcode.codingevents.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.*;
+import java.util.Date;
 import java.util.Objects;
 
 public class Event {
@@ -19,47 +22,22 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    // Field should not be null or blank
-    // Add a field to collect information about where the event will take place.
-    @NotBlank(message="Location cannot be left blank.")
+    @NotBlank(message="Location is required.")
+    @NotNull
     private String location;
 
-    // Make this field only able to be marked as true.
-    // Add a field to collect information about whether an attendee must register for the event or not.
     @AssertTrue(message="Registration must be required at this time.")
     private boolean registrationRequired = true;
 
-    // Valid values for this field should be any number over zero.
-    // Add a field to collect information about the number of attendees for the event
-    @Positive(message="Number of attendees must be one or more.")
-    //@Min(1)
+    //@Min(value=1, message="Must have at least 1 attendee.")
+    @Positive(message="Must have at least 1 attendee.")
     private int numberOfAttendees;
 
     // Browse the validation annotations to find one to use on another new field of your choosing.
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-    public int getNumberOfAttendees() {
-        return numberOfAttendees;
-    }
-
-    public void setNumberOfAttendees(int numberOfAttendees) {
-        this.numberOfAttendees = numberOfAttendees;
-    }
-    public boolean isRegistrationRequired() {
-        return registrationRequired;
-    }
-
-    public void setRegistrationRequired(boolean registrationRequired) {
-        this.registrationRequired = registrationRequired;
-    }
-
-
+    @NotNull(message="Date of event is required.")
+    @Future
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date dateOfEvent;
 
     public Event(String name, String description, String contactEmail) {
         this();
@@ -99,6 +77,37 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public boolean getRegistrationRequired() {
+        return registrationRequired;
+    }
+
+    public void setRegistrationRequired(boolean registrationRequired) {
+        this.registrationRequired = registrationRequired;
+    }
+
+    public int getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
+    public void setNumberOfAttendees(int numberOfAttendees) {
+        this.numberOfAttendees = numberOfAttendees;
+    }
+
+    public Date getDateOfEvent() {
+        return dateOfEvent;
+    }
+
+    public void setDateOfEvent(Date dateOfEvent) {
+        this.dateOfEvent = dateOfEvent;
     }
 
     @Override

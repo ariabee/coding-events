@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
             <label>Description
-                <input type="text" th:field="${event.description}" placeholder="Enter event description..." class="form-control"/>
+                <input type="text" th:field="*{description}" placeholder="Enter event description..." class="form-control"/>
             </label>
             <p class="error" th:errors="${event.description}"></p>
         </div>
@@ -27,8 +27,6 @@
             </label>
             <p class="error" th:errors="${event.contactEmail}"></p>
         </div>
-
-
         <div class="form-group">
             <label>Location
                 <input type="text" th:field="${event.location}" class="form-control"/>
@@ -36,20 +34,29 @@
             <p class="error" th:errors="${event.location}"></p>
         </div>
         <div class="form-group">
-            <label>Registration Required?
-                <input type="checkbox" th:field="${event.registrationRequired}" class="form-control"/>
+            <label>Is registration required?
+                <input type="checkbox" th:field="${event.registrationRequired}" class="form-control" checked/>
             </label>
             <p class="error" th:errors="${event.registrationRequired}"></p>
         </div>
         <div class="form-group">
             <label>Number of Attendees
-                <input type="number" th:field="${event.numberOfAttendees}" class="form-control"/>
+                <input type="number" th:field="${event.numberOfAttendees}" class="form-control" min="1"/>
             </label>
             <p class="error" th:errors="${event.numberOfAttendees}"></p>
+        </div>
+        <div class="form-group">
+            <label>Date of Event
+                <input type="date" th:field="${event.dateOfEvent}" class="form-control"/>
+            </label>
+            <p class="error" th:errors="${event.dateOfEvent}"></p>
         </div>
 
         <input type="submit" value="Create" class="btn btn-success"/>
     </form>
+
+<!--Testing out whether the whole page knows that event is the th:object. (It does.)-->
+    <p class="testing" th:text="*{'Testing: ' + id}"></p>
 
 </body>
 </html>

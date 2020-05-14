@@ -72,6 +72,7 @@ public class EventController {
         Event eventToEdit = EventData.getById(eventId);
         eventToEdit.setName(name);
         eventToEdit.setDescription(description);
+        //eventToEdit.setLocation(location);
 
         return "redirect:";
     }

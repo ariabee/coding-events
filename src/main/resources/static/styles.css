@@ -21,3 +21,12 @@ th {
     color: red;
     font-size: 14px;
 }
+
+.testing {
+    background-color: gray;
+    color: white;
+    font-size: 10px;
+    margin: 1em auto;
+    padding: 5px;
+    width: max-content;
+}

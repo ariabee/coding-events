@@ -14,8 +14,12 @@
             <th>Event Name</th>
             <th>Description</th>
             <th>Contact Email</th>
+
             <th>Location</th>
+            <th>Number of Attendees</th>
+            <th>Date of Event</th>
             <th>Registration Required</th>
+
             <th>Image</th>
         </tr>
         <th:block th:each="event : ${events}">
@@ -25,7 +29,11 @@
                 <td th:text="${event.description}"></td>
                 <td th:text="${event.contactEmail}"></td>
                 <td th:text="${event.location}"></td>
-                <td th:if="${event.registrationRequired == true}">Yes</td>
+                <td th:text="${event.numberOfAttendees}"></td>
+                <td th:text="${event.dateOfEvent}"></td>
+<!--                <td th:text="${event.registrationRequired}"></td>-->
+                <td th:if="${event.registrationRequired}">Yes</td>
+                <td th:unless="${event.registrationRequired}">No</td>
 
                 <td><img th:src="@{/palmtree.jpg}" alt="Palm Tree" height="70px" width="auto"></td>
                 <td><a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a></td>
