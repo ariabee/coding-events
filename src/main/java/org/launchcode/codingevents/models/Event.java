@@ -39,7 +39,7 @@ public class Event {
     private Date dateOfEvent;
 
     public Event(String name, String description, String contactEmail) {
-        this();
+//        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
@@ -49,8 +49,8 @@ public class Event {
         this.id = nextId;
     }
 
-    public Event(int id) { // The no-arg constructor needed for th:field and createForm handler
-        if (id == this.id) {
+    public Event(int id) {
+        if (id == this.id) { // Current fix to avoid Event() being called twice (The create handler now calls this constructor instead)
             return;
         } else {
             this.id = nextId;
