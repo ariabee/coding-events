@@ -28,7 +28,7 @@ public class Event {
         this.contactEmail = contactEmail;
     }
 
-    public Event() { // The no-arg constructor needed for th:field
+    public Event() { // The no-arg constructor needed for th:field and createForm handler
         this.id = nextId;
         nextId++;
     }
