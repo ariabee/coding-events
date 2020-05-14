@@ -1,8 +1,6 @@
 package org.launchcode.codingevents.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 public class Event {
@@ -20,6 +18,48 @@ public class Event {
     @NotBlank(message = "Contact email is required.")
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
+
+    // Field should not be null or blank
+    // Add a field to collect information about where the event will take place.
+    @NotBlank(message="Location cannot be left blank.")
+    private String location;
+
+    // Make this field only able to be marked as true.
+    // Add a field to collect information about whether an attendee must register for the event or not.
+    @AssertTrue(message="Registration must be required at this time.")
+    private boolean registrationRequired = true;
+
+    // Valid values for this field should be any number over zero.
+    // Add a field to collect information about the number of attendees for the event
+    @Positive(message="Number of attendees must be one or more.")
+    //@Min(1)
+    private int numberOfAttendees;
+
+    // Browse the validation annotations to find one to use on another new field of your choosing.
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public int getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
+    public void setNumberOfAttendees(int numberOfAttendees) {
+        this.numberOfAttendees = numberOfAttendees;
+    }
+    public boolean isRegistrationRequired() {
+        return registrationRequired;
+    }
+
+    public void setRegistrationRequired(boolean registrationRequired) {
+        this.registrationRequired = registrationRequired;
+    }
+
+
 
     public Event(String name, String description, String contactEmail) {
         this();
