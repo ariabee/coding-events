@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Event {
 
     private int id;
-    private static int nextId = 1;
+    private static int nextId = 0;
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -33,7 +33,6 @@ public class Event {
     @Positive(message="Must have at least 1 attendee.")
     private int numberOfAttendees;
 
-    // Browse the validation annotations to find one to use on another new field of your choosing.
     @NotNull(message="Date of event is required.")
     @Future
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -48,7 +47,15 @@ public class Event {
 
     public Event() { // The no-arg constructor needed for th:field and createForm handler
         this.id = nextId;
-        nextId++;
+    }
+
+    public Event(int id) { // The no-arg constructor needed for th:field and createForm handler
+        if (id == this.id) {
+            return;
+        } else {
+            this.id = nextId;
+            nextId++;
+        }
     }
 
     public int getId() {

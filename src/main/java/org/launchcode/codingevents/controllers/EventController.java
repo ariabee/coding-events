@@ -23,7 +23,7 @@ public class EventController {
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
-        model.addAttribute("event", new Event()); // added once no-arg constructor created
+        model.addAttribute("event", new Event(1)); // added once no-arg constructor created
         return "events/create";
     }
 
