@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("events")
@@ -65,7 +66,9 @@ public class EventController {
 
 //    @GetMapping("edit/{eventId}")
 //    public String displayEditForm(Model model, @PathVariable int eventId){
-//        Event eventToEdit = EventData.findById(eventId);
+//        Optional<Event> eventHolder = eventRepository.findById(eventId);
+//        Event eventToEdit = eventHolder.get();
+//
 //        model.addAttribute("event", eventToEdit);
 //        String title = "Edit Event " + eventToEdit.getName() + " (id=" + eventToEdit.getId() + ")";
 //        model.addAttribute("title", title );
@@ -75,7 +78,7 @@ public class EventController {
 //
 //    @PostMapping("edit")
 //    public String processEditForm(int eventId, String name, String description) {
-//        Event eventToEdit = EventData.getById(eventId);
+//        Event eventToEdit = eventRepository.findById(eventId).get();
 //        eventToEdit.setName(name);
 //        eventToEdit.setDescription(description);
 //
