@@ -64,54 +64,31 @@ public class EventController {
         return "redirect:";
     }
 
-//    @GetMapping("edit/{eventId}")
-//    public String displayEditForm(Model model, @PathVariable int eventId){
-//        Event eventToEdit = EventData.getById(eventId);
-//        model.addAttribute("event", eventToEdit);
-//        String title = "Edit Event " + eventToEdit.getName() + " (id=" + eventToEdit.getId() + ")";
-//        model.addAttribute("title", title );
-//
-//        return "events/edit";
-//    }
-//
-//    @PostMapping("edit")
-//    public String processEditForm(int eventId, String name, String description) {
-//        Event eventToEdit = EventData.getById(eventId);
-//        eventToEdit.setName(name);
-//        eventToEdit.setDescription(description);
-//
-//        return "redirect:";
-//    }
+    @GetMapping("edit/{eventId}")
+    public String displayEditForm(Model model, @PathVariable int eventId){
+        Optional<Event> eventHolder = eventRepository.findById(eventId);
+        Event eventToEdit = eventHolder.get();
+
+        model.addAttribute("event", eventToEdit);
+        String title = "Edit Event " + eventToEdit.getName() + " (id=" + eventToEdit.getId() + ")";
+        model.addAttribute("title", title );
+
+        return "events/edit";
+    }
+
+    @PostMapping("edit")
+    public String processEditForm(int eventId, String name, String description) {
+        Event eventToEdit = eventRepository.findById(eventId).get();
+
+        eventToEdit.setName(name);
+        eventToEdit.setDescription(description);
+
+        eventRepository.save(eventToEdit); // if the event exists based on not-null id, then a merge will update the table entry
+
+        return "redirect:";
+    }
 
 }
-
-
-
-
-
-
-//    @GetMapping("edit/{eventId}")
-//    public String displayEditForm(Model model, @PathVariable int eventId){
-//        Optional<Event> eventHolder = eventRepository.findById(eventId);
-//        Event eventToEdit = eventHolder.get();
-//
-//        model.addAttribute("event", eventToEdit);
-//        String title = "Edit Event " + eventToEdit.getName() + " (id=" + eventToEdit.getId() + ")";
-//        model.addAttribute("title", title );
-//
-//        return "events/edit";
-//    }
-//
-//    @PostMapping("edit")
-//    public String processEditForm(int eventId, String name, String description) {
-//        Event eventToEdit = eventRepository.findById(eventId).get();
-//        eventToEdit.setName(name);
-//        eventToEdit.setDescription(description);
-//
-//        eventRepository.save(eventToEdit); // if the event exists based on not-null id, then a merge will update the table entry
-//
-//        return "redirect:";
-//    }
 
 
 
