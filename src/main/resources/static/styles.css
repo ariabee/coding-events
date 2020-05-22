@@ -4,6 +4,11 @@ body {
     padding: .5em;
 }
 
+body.container { /* adjusts for table width larger than body width */
+    max-width: min-content;
+    min-width: 90%;
+}
+
 html {
     background: #4c5d4c;
 }
