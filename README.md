@@ -1,5 +1,5 @@
 # Coding Events
-This application is for maintaining coding events in the area.
+This application is for maintaining upcoming events in the area.
 
 ## Purpose
 Users can view, create, edit, and delete events.
@@ -13,10 +13,12 @@ Currently in version 1.0 ...
 Adding a Person class:
 
 1. Fields: 
-   - Our `Person` class might hold the following fields:
-
+   - Our `Person` class might hold the following fields: ...
 
 2. References to other Classes: 
-   - The `Person` class might also have the following references:
+   - The `Person` class might also have the following references: ...
 
 3. Relational Mappings: 
+    - `Person` would have a many-to-many relationship with...
+    - `Person` would have a one-to-many relationship with...
+     
