@@ -5,3 +5,6 @@ This application is for maintaining upcoming events in the area.
 Users can view, create, edit, and delete events.
 Event categories and event tagging allows users to
 keep track of and explore events through organized navigation.
+
+## Development Purpose
+To practice building persistent web applications.
