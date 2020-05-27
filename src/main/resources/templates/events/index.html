@@ -9,22 +9,15 @@
     <p th:unless="${events} and ${events.size()}">No events!</p>
 
     <table class="table table-striped">
+        <thead>
         <tr>
-            <th>ID</th>
             <th>Event Name</th>
-            <th>Description</th>
-            <th>Contact Email</th>
-            <th>Category</th>
-            <th>Image</th>
         </tr>
+        </thead>
         <th:block th:each="event : ${events}">
             <tr>
-                <td th:text="${event.id}"></td>
-                <td th:text="${event.name}"></td>
-                <td th:text="${event.eventDetails.description}"></td>
-                <td th:text="${event.eventDetails.contactEmail}"></td>
-                <td th:text="${event.eventCategory.name}"></td>
-                <td><img th:src="@{/palmtree.jpg}" alt="Palm Tree" height="70px" width="auto"></td>
+                <td><a th:href="@{/events/details(eventId=${event.id})}" th:text="${event.name}"></a></td>
+<!--                <td><a th:href="'/events/details?eventId=' + ${event.id}" th:text="${event.name}"></a></td>-->
                 <td><a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a></td>
             </tr>
         </th:block>

@@ -26,6 +26,7 @@ public class EventController {
 
     @GetMapping
     public String displayEvents(@RequestParam(required = false) Integer categoryId, Model model) {
+
         if (categoryId == null) {
             model.addAttribute("title", "All Events");
             model.addAttribute("events", eventRepository.findAll()); // .findAll()
@@ -103,6 +104,22 @@ public class EventController {
         eventRepository.save(eventToEdit); // if the event exists based on not-null id, then a merge will update the table entry
 
         return "redirect:";
+    }
+
+    @GetMapping("details")
+    public String displayEventDetails(@RequestParam Integer eventId, Model model) {
+
+        Optional<Event> result = eventRepository.findById(eventId);
+
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Invalid Event ID: " + eventId);
+        } else {
+            Event event = result.get();
+            model.addAttribute("title", event.getName() + " Details");
+            model.addAttribute("event", event);
+        }
+
+        return "events/details";
     }
 
 }
