@@ -2,11 +2,11 @@ package org.launchcode.codingevents.models;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Event extends AbstractEntity {
@@ -18,6 +18,9 @@ public class Event extends AbstractEntity {
     @ManyToOne // establishes "many events to one category" relationship in database (foreign key)
     @NotNull(message = "Category is required")
     private EventCategory eventCategory;
+
+    @ManyToMany // TODO: review this
+    private final List<Tag> tags = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL) // establishes "one event to one eventDetails" relationship
     @Valid // makes sure that fields inside eventDetails are also valid
@@ -46,6 +49,14 @@ public class Event extends AbstractEntity {
 
     public void setEventCategory(EventCategory eventCategory) {
         this.eventCategory = eventCategory;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
     }
 
     public EventDetails getEventDetails() {
