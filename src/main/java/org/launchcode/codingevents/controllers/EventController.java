@@ -3,6 +3,7 @@ package org.launchcode.codingevents.controllers;
 import org.launchcode.codingevents.data.EventCategoryRepository;
 import org.launchcode.codingevents.data.EventRepository;
 import org.launchcode.codingevents.models.Event;
+import org.launchcode.codingevents.models.EventDetails;
 import org.launchcode.codingevents.models.EventCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,7 +98,7 @@ public class EventController {
         Event eventToEdit = eventRepository.findById(eventId).get();
 
         eventToEdit.setName(name);
-        eventToEdit.setDescription(description);
+        eventToEdit.getEventDetails().setDescription(description);
 
         eventRepository.save(eventToEdit); // if the event exists based on not-null id, then a merge will update the table entry
 
