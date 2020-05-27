@@ -14,7 +14,7 @@ public class Tag extends AbstractEntity {
     @NotBlank
     private String name;
 
-    @ManyToMany(mappedBy = "tags") // TODO
+    @ManyToMany(mappedBy = "tags") // tells Hibernate to look for Events that have the current Tag object associated with it
     private final List<Event> events = new ArrayList<>();
 
     public Tag(String name) {
