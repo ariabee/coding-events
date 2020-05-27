@@ -1,8 +1,8 @@
 package org.launchcode.codingevents.controllers;
 
+import org.launchcode.codingevents.data.EventCategoryRepository;
 import org.launchcode.codingevents.data.EventRepository;
 import org.launchcode.codingevents.models.Event;
-import org.launchcode.codingevents.models.EventType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +19,11 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private EventCategoryRepository eventCategoryRepository;
+
     @GetMapping
-    public String displayAllEvents(Model model) {
+    public String displayEvents(Model model) {
         model.addAttribute("title", "All Events");
         model.addAttribute("events", eventRepository.findAll()); // .findAll()
         return "events/index";
@@ -30,7 +33,7 @@ public class EventController {
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
         model.addAttribute("event", new Event()); // added once no-arg constructor created
-        model.addAttribute("types", EventType.values()); // pass in array of enum values to create.html
+        model.addAttribute("categories", eventCategoryRepository.findAll()); // fetch all event categories
         return "events/create";
     }
 
