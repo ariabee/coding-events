@@ -128,13 +128,12 @@ public class EventController {
         return "events/details";
     }
 
-    // TODO review add-tag
-
     // responds to events/add-tag?eventId=3
     @GetMapping("add-tag")
     public String displayAddTagForm(@RequestParam Integer eventId, Model model) {
 
-        Event event = eventRepository.findById(eventId).get();
+        Optional<Event> result = eventRepository.findById(eventId);
+        Event event = result.get();
         model.addAttribute("title", "Add Tag to: " + event.getName());
         model.addAttribute( "tags", tagRepository.findAll());
 
@@ -158,7 +157,7 @@ public class EventController {
                 event.addTag(tag);
                 eventRepository.save(event);
             }
-            return "redirect:details?eventId=" + event.getId();
+            return "redirect:details?eventId=" + event.getId(); //  must use redirect here
         }
         return "redirect:add-tag";
     }

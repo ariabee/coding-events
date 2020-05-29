@@ -19,7 +19,7 @@ public class Event extends AbstractEntity {
     @NotNull(message = "Category is required")
     private EventCategory eventCategory;
 
-    @ManyToMany // TODO: review this @Valid ? establishes a relationship from an event to every Tag instance placed in its tags collection.
+    @ManyToMany // establishes a relationship from an event to every Tag instance placed in its tags collection.
     private final List<Tag> tags = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL) // establishes "one event to one eventDetails" relationship

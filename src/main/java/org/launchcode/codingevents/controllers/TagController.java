@@ -39,7 +39,7 @@ public class TagController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Tag");
-            model.addAttribute(tag); // TODO: review vs EventController create Event
+//            model.addAttribute(tag); // not needed, bc the "tag" used in create.html comes from @ModelAttribute Tag tag already
             return "tags/create";
         }
 
