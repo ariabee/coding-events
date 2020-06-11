@@ -5,11 +5,11 @@
 
     <header th:replace="fragments :: header"></header>
 
-    <h2>Search events by name:</h2>
+    <h2>Search events:</h2>
 
     <form th:action="@{/events/search/results}" method = "post" class="form">
 
-        <label for="searchTerm">Search by name:</label>
+        <label for="searchTerm">Search by value:</label>
         <input type="text" name="searchTerm" id="searchTerm" />
 
         <input type="submit" value="Search" />
