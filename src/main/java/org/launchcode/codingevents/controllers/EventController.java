@@ -161,6 +161,14 @@ public class EventController {
         }
         return "redirect:add-tag";
     }
+
+    @GetMapping("search")
+    public String searchEvents(Model model) {
+
+        model.addAttribute("title", "Search");
+        return "events/search";
+
+    }
 }
 
 
