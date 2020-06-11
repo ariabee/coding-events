@@ -5,6 +5,7 @@ import org.launchcode.codingevents.data.EventRepository;
 import org.launchcode.codingevents.data.TagRepository;
 import org.launchcode.codingevents.models.Event;
 import org.launchcode.codingevents.models.EventCategory;
+import org.launchcode.codingevents.models.EventSearch;
 import org.launchcode.codingevents.models.Tag;
 import org.launchcode.codingevents.models.dto.EventTagDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,10 +164,26 @@ public class EventController {
     }
 
     @GetMapping("search")
-    public String searchEvents(Model model) {
+    public String renderSearchEventsForm(Model model) {
 
         model.addAttribute("title", "Search");
         return "events/search";
+    }
+
+    @PostMapping("search/results")
+    public String processSearchEventsForm(Model model, @RequestParam String searchTerm) {
+
+        Iterable<Event> events;
+
+        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
+            events = eventRepository.findAll();
+        } else {
+            events = EventSearch.findEventsByValue(searchTerm, eventRepository.findAll());
+        }
+
+        model.addAttribute("title", "Events with search term: " + searchTerm);
+        model.addAttribute( "events", events);
+        return "events/index"; // sends data to display all events template for now
 
     }
 }
