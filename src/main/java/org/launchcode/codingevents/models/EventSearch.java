@@ -17,10 +17,24 @@ public class EventSearch {
                 results.add(event);
             } else if (event.getEventCategory().getName().toLowerCase().contains(substring)) {
                 results.add(event);
+            } else if (checkTagsContainValue(substring, event)) {
+                results.add(event);
             }
         }
 
         return results;
+    }
+
+    private static boolean checkTagsContainValue(String value, Event event) {
+        List<Tag> tags = event.getTags();
+        String valNoSpaces = value.replace(" ", "");
+
+        for (Tag tag : tags) {
+            if (tag.getName().toLowerCase().contains(valNoSpaces)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
