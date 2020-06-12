@@ -19,6 +19,7 @@
             <tr>
                 <td><a th:href="@{/events/details(eventId=${event.id})}" th:text="${event.name}"></a></td>
 <!--                <td><a th:href="'/events/details?eventId=' + ${event.id}" th:text="${event.name}"></a></td>-->
+                <td><img th:src="${event.imageLink}" th:alt="${event.name + ' image'}" height="100px" width="auto"/></td>
                 <td><a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a></td>
             </tr>
         </th:block>

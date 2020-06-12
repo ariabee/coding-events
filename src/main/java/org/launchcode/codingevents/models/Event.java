@@ -27,6 +27,8 @@ public class Event extends AbstractEntity {
     @NotNull
     private EventDetails eventDetails;
 
+    private String imageLink;
+
     public Event(String name, EventCategory eventCategory) {
         this.name = name;
         this.eventCategory = eventCategory;
@@ -65,6 +67,14 @@ public class Event extends AbstractEntity {
 
     public void setEventDetails(EventDetails eventDetails) {
         this.eventDetails = eventDetails;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 
     @Override

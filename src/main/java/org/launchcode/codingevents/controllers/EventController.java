@@ -101,11 +101,12 @@ public class EventController {
     }
 
     @PostMapping("edit")
-    public String processEditForm(int eventId, String name, String description) {
+    public String processEditForm(int eventId, String name, String description, String imageLink) {
         Event eventToEdit = eventRepository.findById(eventId).get();
 
         eventToEdit.setName(name);
         eventToEdit.getEventDetails().setDescription(description);
+        eventToEdit.setImageLink(imageLink);
 
         eventRepository.save(eventToEdit); // if the event exists based on not-null id, then a merge will update the table entry
 
